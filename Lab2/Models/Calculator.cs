@@ -13,18 +13,35 @@
 
         public double Calculate()
         {
-            switch(Op)
+            switch (Op)
             {
                 case Operators.ADD:
-                    return (double)(A * B);
+                    return (double)(A + B);
                 case Operators.SUB:
                     return (double)(A - B);
                 case Operators.MUL:
                     return (double)(A * B);
                 case Operators.DIV:
-                    return (double)(A * B);
+                    return (double)(A / B);
                 default: return double.NaN;
+            }
+        }
+
+        public string Sign()
+        {
+            switch (Op)
+            {
+                case Operators.ADD:
+                    return "+";
+                case Operators.SUB:
+                    return "-";
+                case Operators.MUL:
+                    return "*";
+                case Operators.DIV:
+                    return "/";
+                default: return "";
             }
         }
     }
 }
+

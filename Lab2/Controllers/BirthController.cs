@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Lab2.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Lab2.Controllers
 {
@@ -13,5 +14,13 @@ namespace Lab2.Controllers
         {
             return View();
         }
+
+        public IActionResult Result(Birth model)
+        {
+            if (!model.IsValid()) return BadRequest();
+
+            return View(model);
+        }
     }
 }
+
