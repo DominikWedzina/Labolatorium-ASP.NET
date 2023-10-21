@@ -6,7 +6,7 @@
         public DateTime Date { get; set; }
         public bool IsValid()
         {
-            return Name != null && DateTime.Today.Year - Date.Year > 0;
+            return Name != null && DateTime.Today.Year - Date.Year >= 0;
         }
         public int BirthDate()
         {
