@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Lab2.Models;
+﻿using Lab2.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Lab2.Controllers
 {
@@ -15,8 +15,8 @@ namespace Lab2.Controllers
         {
             return View();
         }
-
-        public IActionResult Result(Calculator model)
+        [HttpPost]
+        public IActionResult Result([FromForm] Calculator model)
         {
             if (!model.IsValid()) return BadRequest();
 

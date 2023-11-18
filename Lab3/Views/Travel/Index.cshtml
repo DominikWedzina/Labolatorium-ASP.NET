@@ -1,0 +1,54 @@
+﻿@model List<Travel>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>List of travels</h1>
+<a class="btn btn-primary mt-3" asp-controller="Travel" asp-action="Create">Add travel</a>
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Start date
+            </th>
+            <th>
+                End date
+            </th>
+            <th>
+                Guide
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Travel travel in @Model)
+        {
+                <tr>
+                    <td>
+                    @travel.Name
+                    </td>
+                    <td>
+                    @travel.StartDate.ToString("dd.MM.yyyy")
+                    </td>
+                    <td>
+                    @travel.EndDate.ToString("dd.MM.yyyy")
+                    </td>
+                    <td>
+                    @travel.Guide
+                    </td>
+                    <td>
+                        <a asp-action="Update" asp-route-id=@travel.Id>Edit</a>
+                        <a asp-action="Details" asp-route-id=@travel.Id>Details</a>
+                        <a asp-action="Delete" asp-route-id=@travel.Id>Delete</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

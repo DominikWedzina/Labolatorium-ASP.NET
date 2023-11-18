@@ -38,23 +38,30 @@ namespace Lab1.Controllers
             {
                 return View("Error");
             }
+            ViewBag.a = a;
+            ViewBag.b = b;
 
-            switch(op)
+            switch (op)
             {
                 case Operators.ADD:
-                    ViewBag.op = a + b;
+                    ViewBag.op = "add";
+                    ViewBag.result = a + b;
                     break;
                 case Operators.SUB:
-                    ViewBag.op = a - b;
+                    ViewBag.op = "sub";
+                    ViewBag.result = a - b;
                     break;
                 case Operators.MUL:
-                    ViewBag.op = a * b;
+                    ViewBag.op = "mul";
+                    ViewBag.result = a * b;
                     break;
                 case Operators.DIV:
-                    ViewBag.op = a / b;
+                    ViewBag.op = "div";
+                    ViewBag.result = a / b;
                     break;
                 case Operators.POW:
-                    ViewBag.op = Math.Pow((double)a,(double)b);
+                    ViewBag.op = "pow";
+                    ViewBag.result = Math.Pow((double)a, (double)b);
                     break;
                 default: return View("Error");
             }

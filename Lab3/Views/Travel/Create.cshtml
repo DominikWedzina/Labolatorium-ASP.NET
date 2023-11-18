@@ -1,0 +1,53 @@
+﻿@model Travel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>Add travel</h1>
+
+<form style="width: 500px" asp-controller="Travel" asp-action="Create" method="post">
+    <label asp-for="Name">Name:</label>
+    <span class="text-danger" asp-validation-for="Name"></span>
+    <input class="form-control mb-3" asp-for="Name"/>
+
+    <label asp-for="StartDate">Start date:</label>
+    <span class="text-danger" asp-validation-for="StartDate"></span>
+    <input type="datetime-local" class="form-control mb-3" asp-for="StartDate" />
+
+    <label asp-for="EndDate">End date:</label>
+    <span class="text-danger" asp-validation-for="EndDate"></span>
+    <input type="datetime-local" class="form-control mb-3" asp-for="EndDate" />
+
+    <label asp-for="StartPlace">Start place:</label>
+    <span class="text-danger" asp-validation-for="StartPlace"></span>
+    <input class="form-control mb-3" asp-for="StartPlace" />
+
+    <label asp-for="EndPlace">End place:</label>
+    <span class="text-danger" asp-validation-for="EndPlace"></span>
+    <input class="form-control mb-3" asp-for="EndPlace" />
+
+    <label asp-for="Guide">Guide:</label>
+    <span class="text-danger" asp-validation-for="Guide"></span>
+    <input class="form-control mb-3" asp-for="Guide" />
+
+    <label asp-for="Participants">Participants:</label>
+    <span class="text-danger" asp-validation-for="Participants"></span>
+    <div id="additionalParticipants"></div>
+    <button type="button" class="btn btn-secondary mb-3" onclick="addParticipant()">Add Participant</button>
+
+
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="submit">Add</button>
+    </div>
+</form>
+
+<script>
+    function addParticipant() {
+        var container = document.getElementById("additionalParticipants");
+        var input = document.createElement("input");
+        input.className = "form-control mb-3";
+        input.name = "Participants";
+        container.appendChild(input);
+    }
+</script>

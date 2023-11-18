@@ -1,0 +1,45 @@
+﻿@model Travel
+
+<h1 class="mt-3">Details</h1>
+<a class="btn btn-primary mt-3" asp-controller="Travel" asp-action="Index">Go back</a>
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">
+                @Model.Name
+            </h5>
+        </div>
+        <div id="detailsContent" class="collapse show">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="mb-1"><strong>Date:</strong> @Model.StartDate.ToString("dd.MM.yyyy") - @Model.EndDate.ToString("dd.MM.yyyy")</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="mb-1"><strong>From:</strong> @Model.StartPlace</p>
+                        <p class="mb-1"><strong>To:</strong> @Model.EndPlace</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-1"><strong>Guide:</strong> @Model.Guide</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-1"><strong>Participants:</strong></p>
+                        <ul class="list-group">
+                            @foreach (var participant in Model.Participants)
+                            {
+                                <li class="list-group-item">@participant</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
