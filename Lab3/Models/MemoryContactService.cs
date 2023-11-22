@@ -2,15 +2,25 @@
 {
     public class MemoryContactService : IContactService
     {
+        private readonly IDateTimeProvider _timeProvider;
+
+        public MemoryContactService(IDateTimeProvider timeProvider)
+        {
+            _timeProvider = timeProvider;
+        }
+
         private readonly Dictionary<int, Contact> _contacts = new Dictionary<int, Contact>() {
             { 1, new Contact() { Id = 1, Name="Adam", Email="adamjeste@onet.pl", Phone="623782383"} },
-            { 2, new Contact() { Id = 2, Name = "Adam", Email = "adamjeste@onet.pl", Phone = "623782383"} },
+            { 2, new Contact() { Id = 2, Name = "Piotr", Email = "Pioterjeste@onet.pl", Phone = "564645365"} },
 
         };
         private int _id = 3;
         public void Add(Contact contact)
         {
             contact.Id = _id++;
+            contact.Created = _timeProvider.GetDateTime();
+            Console.WriteLine($"Contact created at: {contact.Created}");
+
             _contacts[contact.Id] = contact;
         }
 

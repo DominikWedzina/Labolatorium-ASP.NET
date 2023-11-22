@@ -12,10 +12,13 @@
     <thead>
         <tr>
             <th>
-                Imię
+                @Html.DisplayNameFor(model => model[0].Name)
             </th>
             <th>
-                Adres email
+                @Html.DisplayNameFor(model => model[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Priority)
             </th>
             <th>
                 Akcje
@@ -31,6 +34,9 @@
                 </td>
                 <td>
                     @contact.Email
+                </td>
+                <td>
+                    @contact.Priority
                 </td>
                 <td>
                     <a asp-action="Update" asp-route-id=@contact.Id>Edit</a>

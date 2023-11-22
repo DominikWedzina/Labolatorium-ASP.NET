@@ -11,4 +11,8 @@
     <Optimize>False</Optimize>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Models\Priority.cs" />
+  </ItemGroup>
+
 </Project>
