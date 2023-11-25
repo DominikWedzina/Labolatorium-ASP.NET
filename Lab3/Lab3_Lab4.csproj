@@ -15,4 +15,8 @@
     <Compile Remove="Models\Priority.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj" />
+  </ItemGroup>
+
 </Project>
