@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace Labolatorium3_App.Models
@@ -31,11 +33,20 @@ namespace Labolatorium3_App.Models
 
         [Display(Name = "Participants")]
         [Required(ErrorMessage = "Participants are required")]
-        public List<string> Participants { get; set; }
+        public string Participants { get; set; }
 
         [Display(Name = "Guide")]
-        public string Guide { get; set; }
+        [HiddenInput]
 
+        public int GuideId { get; set; }
 
+        [ValidateNever]
+        public List<SelectListItem> Guides { get; set; }
+
+        [HiddenInput]
+        public int OrganizationId { get; set; }
+
+        [ValidateNever]
+        public List<SelectListItem> Organizations { get; set; }
     }
 }

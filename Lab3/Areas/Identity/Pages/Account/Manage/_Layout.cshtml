@@ -1,0 +1,29 @@
+﻿@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+    {
+        Layout = parentLayout.ToString();
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
+}
+
+<h1>Manage your account</h1>
+
+<div class="w-100">
+    <h2>Change your account settings</h2>
+    <hr />
+    <div class="d-flex justify-content-center gap-4">
+        <div class="flex-grow-1">
+            <partial name="_ManageNav" />
+        </div>
+        <div class="flex-grow-1">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

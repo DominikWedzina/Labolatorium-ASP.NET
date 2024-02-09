@@ -7,6 +7,8 @@
 }
 <h1>List of travels</h1>
 <a class="btn btn-primary mt-3" asp-controller="Travel" asp-action="Create">Add travel</a>
+@* <a class="btn btn-primary mt-3" asp-controller="Travel" asp-action="CreateApi">Add travel (API version)</a> *@
+
 <table class="table mt-4">
     <thead>
         <tr>
@@ -18,9 +20,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model[0].EndDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model[0].Guide)
             </th>
             <th>
                 Actions
@@ -39,9 +38,6 @@
                     </td>
                     <td>
                     @travel.EndDate.ToString("dd.MM.yyyy")
-                    </td>
-                    <td>
-                    @travel.Guide
                     </td>
                     <td>
                         <a asp-action="Update" asp-route-id=@travel.Id>Edit</a>

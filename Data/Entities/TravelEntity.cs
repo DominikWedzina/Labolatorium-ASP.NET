@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Entities
 {
-    [Table("travels")]
-    internal class TravelEntity
+    [Table("Travels")]
+    public class TravelEntity
     {
         public int Id { get; set; }
         [MaxLength(50)]
@@ -30,9 +25,12 @@ namespace Data.Entities
         public string EndPlace { get; set; }
 
         [Required]
-        public List<string> Participants { get; set; }
-        [MaxLength(50)]
+        public string Participants { get; set; }
+        public int OrganizationId { get; set; }
+        public OrganizationEntity? Organization { get; set; }
+
+        public int GuideId { get; set; }
         [Required]
-        public string Guide { get; set; }
+        public GuideEntity? Guide { get; set; }
     }
 }

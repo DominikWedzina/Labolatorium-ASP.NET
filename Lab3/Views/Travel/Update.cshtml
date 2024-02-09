@@ -29,16 +29,18 @@
     <span class="text-danger" asp-validation-for="EndPlace"></span>
 
     <label asp-for="Participants">Participants:</label>
-<input type="hidden" asp-for="Participants.Count" />
-    @for (int i = 0; i < Model.Participants.Count; i++)
-    {
-            <input class="form-control mb-3" asp-for="Participants[i]" />
-    }
-<span class="text-danger" asp-validation-for="Participants"></span>
+    <input class="form-control mb-3" asp-for="Participants" />
+    <span class="text-danger" asp-validation-for="Participants"></span>
 
-    <label asp-for="Guide">Guide:</label>
-    <input class="form-control mb-3" asp-for="Guide" />
-    <span class="text-danger" asp-validation-for="Guide"></span>
+
+    <label asp-for="Guides" class="fw-bold"></label>
+
+    <div class="form-group">
+        <select class="form-control" asp-for="GuideId" asp-items="@Model.Guides"></select>
+    </div>
+
+        <label asp-for="Organizations" class="fw-bold"></label>
+    <select class="form-control" asp-for="OrganizationId" asp-items="@Model.Organizations"></select>
 
     <div class="d-grid gap-2 col-6 mx-auto">
         <button class="btn btn-primary" type="submit">Save</button>

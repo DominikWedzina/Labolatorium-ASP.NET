@@ -1,5 +1,7 @@
 using Data;
 using Labolatorium3_App.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Labolatorium3_App
 {
@@ -8,12 +10,19 @@ namespace Labolatorium3_App
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            var connectionString = builder.Configuration.GetConnectionString("AppDbContextConnection") ?? throw new InvalidOperationException("Connection string 'AppDbContextConnection' not found.");
+            builder.Services.AddRazorPages();
+            builder.Services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
+            builder.Services.AddMemoryCache();
+            builder.Services.AddSession();
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddSingleton<ITravelService, MemoryTravelService>();
-            builder.Services.AddSingleton<IDateTimeProvider, CurrentDateTimeProvider>();
             builder.Services.AddDbContext<AppDbContext>();
+
+            builder.Services.AddTransient<ITravelService, EFTravelService>();
+            builder.Services.AddSingleton<IDateTimeProvider, CurrentDateTimeProvider>();
 
             var app = builder.Build();
 
@@ -30,9 +39,12 @@ namespace Labolatorium3_App
 
             app.UseRouting();
 
-            app.UseMiddleware<LastVisitCookie>();
-
+            app.UseAuthentication();
             app.UseAuthorization();
+            app.UseSession();
+            app.MapRazorPages();
+
+            app.UseMiddleware<LastVisitCookie>();
 
             app.MapControllerRoute(
                 name: "default",

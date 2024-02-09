@@ -27,27 +27,17 @@
     <span class="text-danger" asp-validation-for="EndPlace"></span>
     <input class="form-control mb-3" asp-for="EndPlace" />
 
-    <label asp-for="Guide">Guide:</label>
-    <span class="text-danger" asp-validation-for="Guide"></span>
-    <input class="form-control mb-3" asp-for="Guide" />
+    <div class="form-group">
+        <select class="form-control" asp-for="GuideId" asp-items="@Model.Guides"></select>
+    </div>
 
     <label asp-for="Participants">Participants:</label>
     <span class="text-danger" asp-validation-for="Participants"></span>
-    <div id="additionalParticipants"></div>
-    <button type="button" class="btn btn-secondary mb-3" onclick="addParticipant()">Add Participant</button>
-
-
+    <input class="form-control mb-3" asp-for="Participants" />
+    <div class="form-group">
+        <select class="form-control" asp-for="OrganizationId" asp-items="@Model.Organizations"></select>
+    </div>
     <div class="d-grid gap-2 col-6 mx-auto">
         <button class="btn btn-primary" type="submit">Add</button>
     </div>
 </form>
-
-<script>
-    function addParticipant() {
-        var container = document.getElementById("additionalParticipants");
-        var input = document.createElement("input");
-        input.className = "form-control mb-3";
-        input.name = "Participants";
-        container.appendChild(input);
-    }
-</script>
