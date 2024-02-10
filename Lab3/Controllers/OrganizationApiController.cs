@@ -16,6 +16,12 @@ namespace Labolatorium3_App.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetAllCameras()
+        {
+            return Ok(_context.Organizations.ToList());
+        }
+
+        [HttpGet("filter")]
         public IActionResult GetFiltered(string filter)
         {
             return Ok(_context.Organizations
