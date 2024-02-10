@@ -107,6 +107,7 @@ namespace Labolatorium3_App.Controllers
             .ToList();
             return View(model);
         }
+        [AllowAnonymous]
         public IActionResult Details(int id)
         {
             var travel = _travelService.FindById(id);
